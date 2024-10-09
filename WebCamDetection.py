@@ -6,7 +6,7 @@ import torch
 import random
 
 # Carrega o modelo pré-treinado
-model = torch.hub.load("ultralytics/yolov8", "yolov8l.pt")
+model = YOLO("yolov8n.pt")
 
 # Inicializa a câmera do computador
 cap = cv2.VideoCapture(0)
@@ -15,7 +15,7 @@ while True:
     ret, frame = cap.read()
 
     # Realiza a predição
-    results = model.predict(frame, classes = [0])
+    results = model(frame)
 
     # Verifica cada resultado que aparece
     for result in results:
